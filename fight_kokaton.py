@@ -170,10 +170,7 @@ def main():
                     # beam,bombの判定
                     beam=None
                     bomb=None
-                    # bird.change_img(8, screen)
-                    # pg.display.update()
-                    # time.sleep(1)
-                    #   
+                    bird.change_img(6, screen)
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
