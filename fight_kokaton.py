@@ -160,19 +160,19 @@ class Score:
         pg.display.update()  # 更新
 
 
-class Explosion:
-    """
-    爆発に関するクラス
-    """
-    def __init__(self, obj: pg.Rect):
-        self.imgs = [pg.image.load("fig/explosion.gif"),pg.transform.flip(pg.image.load("fig/explosion.gif"), True, True)]
-        self.rct = self.imgs[0].get_rect()
-        self.rct.center = obj.center
-        self.life = 20
-def update(self, screen: pg.Surface):
-        screen.blit(self.imgs[self.life//10%2], self.rct)
-        self.life -= 1
-        return self.life > 0
+# class Explosion:
+#     """
+#     爆発に関するクラス
+#     """
+#     def __init__(self, obj: pg.Rect):
+#         self.imgs = [pg.image.load("fig/explosion.gif"),pg.transform.flip(pg.image.load("fig/explosion.gif"), True, True)]
+#         self.rct = self.imgs[0].get_rect()
+#         self.rct.center = obj.center
+#         self.life = 20
+# def update(self, screen: pg.Surface):
+#         screen.blit(self.imgs[self.life//10%2], self.rct)
+#         self.life -= 1
+#         return self.life > 0
 
 # def check_bound(rct: pg.Rect) -> bool:
 #     return 0 <= rct.left and rct.right <= WIDTH and 0 <= rct.top and rct.bottom <= HEIGHT
@@ -190,7 +190,7 @@ def main():
     score = Score()  # Score呼び出し
     beam = None  # ゲーム初期化時にはビームは存在しない
     beams=[]
-    explosions = []
+    # explosions = []
     clock = pg.time.Clock()
     tmr = 0
     while True:
@@ -222,11 +222,11 @@ def main():
                         bombs[i]=None
                         beams[j]=None
                         bird.change_img(6, screen)
-                        explosions.append(Explosion(bomb.rct))
+                        # explosions.append(Explosion(bomb.rct))
                         score.score+=1
         bombs = [bomb for bomb in bombs if bomb is not None]
         beams = [beam for beam in beams if beam is not None]
-        explosions = [Ex for Ex in explosions if  Ex.life > 0]
+        # explosions = [Ex for Ex in explosions if  Ex.life > 0]
     
 
         key_lst = pg.key.get_pressed()
@@ -239,9 +239,9 @@ def main():
             bomb.update(screen)
         pg.display.update()
         score.update(screen)
-        for explosion in explosions:
-            if explosion > 0:
-                explosion.update(screen)
+        # for explosion in explosions:
+        #     if explosion > 0:
+        #         explosion.update(screen)
         tmr += 1
         clock.tick(50)
 
