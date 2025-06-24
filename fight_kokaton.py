@@ -239,9 +239,6 @@ def main():
             bomb.update(screen)
         pg.display.update()
         score.update(screen)
-        # for explosion in explosions:
-        #     if explosion > 0:
-        #         explosion.update(screen)
         tmr += 1
         clock.tick(50)
 
