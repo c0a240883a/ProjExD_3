@@ -101,7 +101,11 @@ class Beam:
         self.rct = self.img.get_rect()
         self.rct.centery= bird.rct.centery
         self.rct.left = bird.rct.right  # ビームの左座標＝こうかとんの右座標
-        self.vx, self.vy = +5, 0
+        self.vx, self.vy = bird.dire
+        if bird.dire[0]<0:
+            pg.transform.rotozoom(self.img, 45, 0.9)
+        self.rct.centerx = bird.rct.centerx + bird.rct.width * self.vx // 5
+        self.rct.centery = bird.rct.centery + bird.rct.height * self.vy // 5
 
     def update(self, screen: pg.Surface):
         """
